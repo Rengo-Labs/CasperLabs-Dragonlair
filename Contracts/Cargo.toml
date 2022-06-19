@@ -1,0 +1,14 @@
+[workspace]
+
+members = [
+  "dragon_lair",
+  "dragon_lair_tests",
+  "dragon_lair_crate",
+  "erc20_crate",
+  "test_contract",
+  "erc20"
+]
+
+[profile.release]
+codegen-units = 1
+lto = true

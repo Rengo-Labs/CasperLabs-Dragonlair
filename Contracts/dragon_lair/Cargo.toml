@@ -1,0 +1,25 @@
+[package]
+authors = ["Muhammad Saad Majeed <saad.majeed@scytalelabs.com>"]
+edition = "2018"
+name = "dragon_lair"
+version = "0.2.0"
+
+[dependencies]
+dragon_lair_crate = { path = "../dragon_lair_crate" }
+erc20_crate = {path = "../erc20_crate"}
+casper-contract = "1.4.3"
+casper-types = "1.4.4"
+contract-utils = { path = "../utils/contract-utils" }
+cryptoxide = "0.3.3"
+hex = { version = "0.4.3", default-features = false }
+renvm-sig = "0.1.1 "
+
+[[bin]]
+bench = false
+doctest = false
+name = "dragon_lair"
+path = "bin/dragon_lair.rs"
+test = false
+
+[features]
+default = ["casper-contract/std", "casper-types/std"]
