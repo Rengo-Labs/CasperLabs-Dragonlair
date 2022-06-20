@@ -10,7 +10,7 @@ fn deploy_erc20(env: &TestEnv, owner: AccountHash) -> TestContract {
         owner,
         runtime_args! {
             "name" => "Reward",
-            "symbol" => "QK",
+            "symbol" => "rw",
             "decimals" => 9 as u8,
             "initial_supply" => U256::from(TEN_E_NINE * 1000)
         },

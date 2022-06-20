@@ -39,8 +39,8 @@ pub trait DRAGONLAIR<Storage: ContractStorage>: ContractContext<Storage> + ERC20
         data::set_package_hash(package_hash);
         ERC20::init(
             self,
-            "Dragon Snowl".to_string(),
-            "osnowl".to_string(),
+            "Reward Token".to_string(),
+            "reward".to_string(),
             9.into(),
             0.into(),
             "".to_string(),
