@@ -2,7 +2,13 @@
 #![no_std]
 
 extern crate alloc;
-use alloc::{boxed::Box, collections::BTreeSet, format, string::{String, ToString}, vec};
+use alloc::{
+    boxed::Box,
+    collections::BTreeSet,
+    format,
+    string::{String, ToString},
+    vec,
+};
 use casper_contract::{
     contract_api::{runtime, storage},
     unwrap_or_revert::UnwrapOrRevert,
@@ -11,8 +17,8 @@ use casper_types::{
     runtime_args, CLType, CLTyped, CLValue, ContractHash, ContractPackageHash, EntryPoint,
     EntryPointAccess, EntryPointType, EntryPoints, Group, Key, Parameter, RuntimeArgs, URef, U256,
 };
-use contract_utils::{ContractContext, OnChainContractStorage, set_key};
-use dragon_lair_crate::{data,DRAGONLAIR};
+use contract_utils::{set_key, ContractContext, OnChainContractStorage};
+use dragon_lair_crate::{data, DRAGONLAIR};
 use erc20_crate::ERC20;
 #[derive(Default)]
 struct DragonLair(OnChainContractStorage);

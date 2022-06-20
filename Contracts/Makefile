@@ -11,7 +11,7 @@ build-test-contract:
 	cargo build --release -p test --target wasm32-unknown-unknown
 	wasm-strip target/wasm32-unknown-unknown/release/dragon_lair_test.wasm 2>/dev/null | true
 test-only:
-	cargo test -p dragon_lair_tests -- --nocapture
+	cargo test -p dragon_lair_tests 
 
 copy-wasm-file-to-test:
 	cp target/wasm32-unknown-unknown/release/*.wasm dragon_lair_tests/wasm

@@ -120,8 +120,8 @@ impl DRAGONLAIRInstance {
         );
     }
     // Result methods
-    pub fn result_snowl_balance<T: CLTyped + FromBytes>(&self,owner:Key) -> T {
-        let owner:String = "snowl_balance_".to_string()+ &owner.to_formatted_string();
+    pub fn result_snowl_balance<T: CLTyped + FromBytes>(&self, owner: Key) -> T {
+        let owner: String = "snowl_balance_".to_string() + &owner.to_formatted_string();
         self.0.query_named_key(owner)
     }
     pub fn result<T: CLTyped + FromBytes>(&self) -> T {
