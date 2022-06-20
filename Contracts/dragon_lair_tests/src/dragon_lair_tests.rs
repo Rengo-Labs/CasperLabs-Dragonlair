@@ -9,7 +9,7 @@ fn deploy_erc20(env: &TestEnv, owner: AccountHash) -> TestContract {
         "erc2020",
         owner,
         runtime_args! {
-            "name" => "Quick",
+            "name" => "Reward",
             "symbol" => "QK",
             "decimals" => 9 as u8,
             "initial_supply" => U256::from(TEN_E_NINE * 1000)
@@ -46,8 +46,6 @@ fn test_enter() {
     let dragon_lair_instance = DRAGONLAIRInstance::contract_instance(dragon_lair_instance);
     dragon_lair_instance.enter(owner, U256::from(TEN_E_NINE * 2));
     dragon_lair_instance.enter(owner, U256::from(TEN_E_NINE * 2));
-    // let v: U256 = dragon_lair_instance.result();
-    // println!("{:?}", v);
 }
 #[test]
 fn test_leave() {
@@ -55,8 +53,6 @@ fn test_leave() {
     let dragon_lair_instance = DRAGONLAIRInstance::contract_instance(dragon_lair_instance);
     dragon_lair_instance.enter(owner, U256::from(TEN_E_NINE * 4));
     dragon_lair_instance.leave(owner, U256::from(TEN_E_NINE * 2));
-    // let v: U256 = dragon_lair_instance.result();
-    // println!("{:?}", v);
 }
 #[test]
 fn test_snowl_balance() {
