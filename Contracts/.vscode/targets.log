@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jun 20 13:58:02 2022
+# Make data base, printed on Tue Jun 21 10:56:02 2022
 
 # Variables
 
@@ -165,7 +163,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-3ad2b599-ce54-4b35-a86c-498ac04f2d3a.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-8123e63d-ab31-4c62-a487-074b70e8308d.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -219,11 +217,11 @@ DBUS_STARTER_BUS_TYPE = session
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/1009e0dd_c95d_456f_a975_0d8d8478e8c4
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/53582e08_37bc_4540_9ecf_ea7ada82aa6f
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.880
+GNOME_TERMINAL_SERVICE = :1.3090
 # default
 SUFFIXES := 
 # environment
@@ -255,9 +253,9 @@ DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=0ec834a9e8d478bef63a906
 
 # Directories
 
-# . (device 66309, inode 4723811): 15 files, no impossibilities.
+# . (device 66309, inode 4723811): 17 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 17 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -275,7 +273,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-20 13:57:48.459916132
+#  Last modified 2022-06-20 14:02:49.069468104
 #  File has been updated.
 #  Successfully updated.
 
@@ -294,10 +292,13 @@ build-test-contract:
 
 test-only:
 #  Implicit rule search has not been done.
+ 
+make: *** No rule to make target 'all'.  Stop.
+
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 14):
-	cargo test -p dragon_lair_tests -- --nocapture
+	cargo test -p dragon_lair_tests 
 
 clippy:
 #  Implicit rule search has not been done.
@@ -312,7 +313,6 @@ prepare:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 2):
 	rustup target add wasm32-unknown-unknown
- 
 
 build-contract:
 #  Implicit rule search has not been done.
@@ -373,12 +373,12 @@ lint: clippy
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 31 / storage = 341 B / avg = 11 B
-# current buf: size = 8162 B / used = 341 B / count = 31 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 33 / storage = 359 B / avg = 10 B
+# current buf: size = 8162 B / used = 359 B / count = 33 / avg = 10 B
 
-# strcache performance: lookups = 53 / hit rate = 41%
+# strcache performance: lookups = 55 / hit rate = 40%
 # hash-table stats:
-# Load=31/8192=0%, Rehash=0, Collisions=1/53=2%
-# Finished Make data base on Mon Jun 20 13:58:02 2022
+# Load=33/8192=0%, Rehash=0, Collisions=2/55=4%
+# Finished Make data base on Tue Jun 21 10:56:02 2022
 
  

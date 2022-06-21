@@ -17,7 +17,7 @@ impl DRAGONLAIRInstance {
         env: &TestEnv,
         contract_name: &str,
         sender: AccountHash,
-        snowl: Key,
+        staking_token: Key,
     ) -> TestContract {
         TestContract::new(
             env,
@@ -25,7 +25,7 @@ impl DRAGONLAIRInstance {
             contract_name,
             sender,
             runtime_args! {
-                "snowl" => snowl
+                "staking_token" => staking_token
             },
         )
     }
@@ -45,67 +45,57 @@ impl DRAGONLAIRInstance {
             },
         )
     }
-    pub fn enter(&self, sender: AccountHash, snowl_amount: U256) {
+    pub fn enter(&self, sender: AccountHash, staking_token_amount: U256) {
         self.0.call_contract(
             sender,
             "enter",
             runtime_args! {
-                "snowl_amount" => snowl_amount
+                "staking_token_amount" => staking_token_amount
             },
         );
     }
-    pub fn leave(&self, sender: AccountHash, o_snowl_amount: U256) {
+    pub fn leave(&self, sender: AccountHash, d_staking_token_amount: U256) {
         self.0.call_contract(
             sender,
             "leave",
             runtime_args! {
-                "o_snowl_amount" => o_snowl_amount
+                "d_staking_token_amount" => d_staking_token_amount
             },
         );
     }
-    pub fn snowl_balance(&self, sender: AccountHash, account: Key) {
+    pub fn staking_token_balance(&self, sender: AccountHash, account: Key) {
         self.0.call_contract(
             sender,
-            "snowl_balance",
+            "staking_token_balance",
             runtime_args! {
                 "account" => account
             },
         );
     }
-    pub fn snowl_balance_jsclient(&self, sender: AccountHash, account: Key) {
+    pub fn staking_token_balance_jsclient(&self, sender: AccountHash, account: Key) {
         self.0.call_contract(
             sender,
-            "snowl_balance_jsclient",
+            "staking_token_balance_jsclient",
             runtime_args! {
                 "account" => account
             },
         );
     }
-    pub fn o_snowl_for_snowl(&self, sender: AccountHash, o_snowl_amount: U256) {
+    pub fn d_staking_token_for_staking_token(&self, sender: AccountHash, d_staking_token_amount: U256) {
         self.0.call_contract(
             sender,
-            "o_snowl_for_snowl",
+            "d_staking_token_for_staking_token",
             runtime_args! {
-                "o_snowl_amount" => o_snowl_amount
+                "d_staking_token_amount" => d_staking_token_amount
             },
         );
     }
-    pub fn snowl_for_o_snowl(&self, sender: AccountHash, snowl_amount: U256) {
+    pub fn staking_token_for_d_staking_token(&self, sender: AccountHash, staking_token_amount: U256) {
         self.0.call_contract(
             sender,
-            "snowl_for_o_snowl",
+            "staking_token_for_d_staking_token",
             runtime_args! {
-                "snowl_amount" => snowl_amount
-            },
-        );
-    }
-    pub fn mint(&self, sender: AccountHash, to: Key, amount: U256) {
-        self.0.call_contract(
-            sender,
-            "mint",
-            runtime_args! {
-                "to" => to,
-                "amount" => amount
+                "staking_token_amount" => staking_token_amount
             },
         );
     }
@@ -120,8 +110,8 @@ impl DRAGONLAIRInstance {
         );
     }
     // Result methods
-    pub fn result_snowl_balance<T: CLTyped + FromBytes>(&self, owner: Key) -> T {
-        let owner: String = "snowl_balance_".to_string() + &owner.to_formatted_string();
+    pub fn result_staking_token_balance<T: CLTyped + FromBytes>(&self, owner: Key) -> T {
+        let owner: String = "staking_token_balance_".to_string() + &owner.to_formatted_string();
         self.0.query_named_key(owner)
     }
     pub fn result<T: CLTyped + FromBytes>(&self) -> T {
