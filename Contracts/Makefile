@@ -30,3 +30,7 @@ lint: clippy
 clean:
 	cargo clean
 	rm -rf dragon_lair_tests/wasm/*.wasm
+	
+git-clean:
+	git rm -rf --cached .
+	git add .

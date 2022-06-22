@@ -99,16 +99,6 @@ impl DRAGONLAIRInstance {
             },
         );
     }
-    pub fn increase_allowance(&self, sender: AccountHash, spender: Key, amount: U256) {
-        self.0.call_contract(
-            sender,
-            "increase_allowance",
-            runtime_args! {
-                "spender" => spender,
-                "amount" => amount
-            },
-        );
-    }
     // Result methods
     pub fn result_staking_token_balance<T: CLTyped + FromBytes>(&self, owner: Key) -> T {
         let owner: String = "staking_token_balance_".to_string() + &owner.to_formatted_string();
