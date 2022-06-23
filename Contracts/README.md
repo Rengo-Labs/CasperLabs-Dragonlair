@@ -144,29 +144,29 @@ sudo casper-client put-deploy \
 Following are the DragonLair's entry point methods.
 
 - #### enter <a id="DragonLair-enter"></a>
-  Used to Enter the lair. Pay some snowl. Earn some dragon snowl.
+  Used to Enter the lair. Pay some staking_token. Earn some dragon staking_token.
 
 Following is the table of parameters.
 
 | Parameter Name | Type |
 | -------------- | ---- |
-| snowl_amount   | U256 |
+| staking_token_amount   | U256 |
 
 This method **returns** nothing.
 
 - #### leave <a id="DragonLair-leave"></a>
-  Used to Leave the lair. Claim back your snowl.
+  Used to Leave the lair. Claim back your staking_token.
 
 Following is the table of parameters.
 
 | Parameter Name | Type |
 | -------------- | ---- |
-| o_snowl_amount | U256 |
+| d_staking_token_amount | U256 |
 
 This method **returns** nothing.
 
-- #### quick_balance <a id="DragonLair-snowl-balance"></a>
-  Returns the total amount of snowl an address has in the contract including fees earned
+- #### quick_balance <a id="DragonLair-staking_token-balance"></a>
+  Returns the total amount of staking_token an address has in the contract including fees earned
 
 Following is the table of parameters.
 
@@ -176,25 +176,25 @@ Following is the table of parameters.
 
 This method **returns** U256.
 
-- #### o_snowl_for_snowl <a id="DragonLair-o-snowl-for-snowl"></a>
-  Returns how much snowl someone gets for depositing o_snowl.
+- #### o_staking_token_for_staking_token <a id="DragonLair-d-staking_token-for-staking_token"></a>
+  Returns how much staking_token someone gets for depositing d_staking_token.
 
 Following is the table of parameters.
 
 | Parameter Name  | Type |
 | --------------- | ---- |
-| o_snowl_amount  | U256 |
+| d_staking_token_amount  | U256 |
 
 This method **returns** U256.
 
-- #### snowl_for_o_snowl <a id="DragonLair-snowl-for-o-snowl"></a>
-  Returns how much o_snowl someone gets for depositing snowl
+- #### staking_token_for_d_staking_token <a id="DragonLair-staking_token-for-d-staking_token"></a>
+  Returns how much d_staking_token someone gets for depositing staking_token
 
 Following is the table of parameters.
 
 | Parameter Name | Type |
 | -------------- | ---- |
-| snowl_amount | U256 |
+| staking_token_amount | U256 |
 
 This method **returns** U256.
 

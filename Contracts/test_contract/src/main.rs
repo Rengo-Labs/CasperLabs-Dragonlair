@@ -30,13 +30,13 @@ fn constructor() {
 }
 
 #[no_mangle]
-fn snowl_balance() {
+fn staking_token_balance() {
     let dragon_lair_address: ContractPackageHash = mappings::get_key(&mappings::dragon_lair_key());
     let account: Key = runtime::get_named_arg("account");
     let ret: U256 = runtime::call_versioned_contract(
         dragon_lair_address,
         None,
-        "snowl_balance",
+        "staking_token_balance",
         runtime_args! {
             "account" => account,
         },
@@ -44,29 +44,29 @@ fn snowl_balance() {
     mappings::set_key(&mappings::result_key(), ret);
 }
 #[no_mangle]
-fn o_snowl_for_snowl() {
+fn d_staking_token_for_staking_token() {
     let dragon_lair_address: ContractPackageHash = mappings::get_key(&mappings::dragon_lair_key());
-    let o_snowl_amount: U256 = runtime::get_named_arg("o_snowl_amount");
+    let d_staking_token_amount: U256 = runtime::get_named_arg("d_staking_token_amount");
     let ret: U256 = runtime::call_versioned_contract(
         dragon_lair_address,
         None,
-        "o_snowl_for_snowl",
+        "d_staking_token_for_staking_token",
         runtime_args! {
-            "o_snowl_amount" => o_snowl_amount,
+            "d_staking_token_amount" => d_staking_token_amount,
         },
     );
     mappings::set_key(&mappings::result_key(), ret);
 }
 #[no_mangle]
-fn snowl_for_o_snowl() {
+fn staking_token_for_d_staking_token() {
     let dragon_lair_address: ContractPackageHash = mappings::get_key(&mappings::dragon_lair_key());
-    let snowl_amount: U256 = runtime::get_named_arg("snowl_amount");
+    let staking_token_amount: U256 = runtime::get_named_arg("staking_token_amount");
     let ret: U256 = runtime::call_versioned_contract(
         dragon_lair_address,
         None,
-        "snowl_for_o_snowl",
+        "staking_token_for_d_staking_token",
         runtime_args! {
-            "snowl_amount" => snowl_amount,
+            "staking_token_amount" => staking_token_amount,
         },
     );
     mappings::set_key(&mappings::result_key(), ret);
@@ -94,22 +94,22 @@ fn get_entry_points() -> EntryPoints {
     ));
 
     entry_points.add_entry_point(EntryPoint::new(
-        "snowl_balance",
+        "staking_token_balance",
         vec![Parameter::new("account", Key::cl_type())],
         <()>::cl_type(),
         EntryPointAccess::Public,
         EntryPointType::Contract,
     ));
     entry_points.add_entry_point(EntryPoint::new(
-        "o_snowl_for_snowl",
-        vec![Parameter::new("o_snowl_amount", U256::cl_type())],
+        "d_staking_token_for_staking_token",
+        vec![Parameter::new("d_staking_token_amount", U256::cl_type())],
         <()>::cl_type(),
         EntryPointAccess::Public,
         EntryPointType::Contract,
     ));
     entry_points.add_entry_point(EntryPoint::new(
-        "snowl_for_o_snowl",
-        vec![Parameter::new("snowl_amount", U256::cl_type())],
+        "staking_token_for_d_staking_token",
+        vec![Parameter::new("staking_token_amount", U256::cl_type())],
         <()>::cl_type(),
         EntryPointAccess::Public,
         EntryPointType::Contract,

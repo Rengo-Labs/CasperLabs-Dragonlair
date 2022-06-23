@@ -34,74 +34,74 @@ impl DRAGONLAIR<OnChainContractStorage> for DragonLair {}
 impl DragonLair {
     fn constructor(
         &mut self,
-        snowl: Key,
+        staking_token: Key,
         contract_hash: ContractHash,
         package_hash: ContractPackageHash,
     ) {
-        DRAGONLAIR::init(self, snowl, Key::from(contract_hash), package_hash);
+        DRAGONLAIR::init(self, staking_token, Key::from(contract_hash), package_hash);
     }
 }
 
 #[no_mangle]
 fn constructor() {
-    let snowl: Key = runtime::get_named_arg("snowl");
+    let staking_token: Key = runtime::get_named_arg("staking_token");
     let contract_hash: ContractHash = runtime::get_named_arg("contract_hash");
     let package_hash: ContractPackageHash = runtime::get_named_arg("package_hash");
-    DragonLair::default().constructor(snowl, contract_hash, package_hash);
+    DragonLair::default().constructor(staking_token, contract_hash, package_hash);
 }
 //data
 #[no_mangle]
-fn snowl() {
-    runtime::ret(CLValue::from_t(data::get_snowl()).unwrap_or_revert());
+fn staking_token() {
+    runtime::ret(CLValue::from_t(data::get_staking_token()).unwrap_or_revert());
 }
 #[no_mangle]
 fn enter() {
-    let snowl_amount: U256 = runtime::get_named_arg("snowl_amount");
-    DragonLair::default().enter(snowl_amount);
+    let staking_token_amount: U256 = runtime::get_named_arg("staking_token_amount");
+    DragonLair::default().enter(staking_token_amount);
 }
 #[no_mangle]
 fn leave() {
-    let o_snowl_amount: U256 = runtime::get_named_arg("o_snowl_amount");
-    DragonLair::default().leave(o_snowl_amount);
+    let d_staking_token_amount: U256 = runtime::get_named_arg("d_staking_token_amount");
+    DragonLair::default().leave(d_staking_token_amount);
 }
 #[no_mangle]
-fn snowl_balance() {
+fn staking_token_balance() {
     let account: Key = runtime::get_named_arg("account");
-    let ret: U256 = DragonLair::default().snowl_balance(account);
+    let ret: U256 = DragonLair::default().staking_token_balance(account);
     runtime::ret(CLValue::from_t(ret).unwrap_or_revert());
 }
 #[no_mangle]
-fn snowl_balance_jsclient() {
+fn staking_token_balance_jsclient() {
     let account: Key = runtime::get_named_arg("account");
-    let ret: U256 = DragonLair::default().snowl_balance(account);
-    // Set Snowl_Balance on Key
-    // Key name = snowl_balance_accounthash(user)
+    let ret: U256 = DragonLair::default().staking_token_balance(account);
+    // Set staking_token_Balance on Key
+    // Key name = staking_token_balance_accounthash(user)
     // accounthash = user account hash
-    let user: String = "snowl_balance_".to_string() + &account.to_formatted_string();
+    let user: String = "staking_token_balance_".to_string() + &account.to_formatted_string();
     set_key(user.as_str(), ret);
 }
 #[no_mangle]
-fn o_snowl_for_snowl() {
-    let o_snowl_amount: U256 = runtime::get_named_arg("o_snowl_amount");
-    let ret: U256 = DragonLair::default().o_snowl_for_snowl(o_snowl_amount);
+fn d_staking_token_for_staking_token() {
+    let d_staking_token_amount: U256 = runtime::get_named_arg("d_staking_token_amount");
+    let ret: U256 = DragonLair::default().d_staking_token_for_staking_token(d_staking_token_amount);
     runtime::ret(CLValue::from_t(ret).unwrap_or_revert());
 }
 #[no_mangle]
-fn o_snowl_for_snowl_jsclient() {
-    let o_snowl_amount: U256 = runtime::get_named_arg("o_snowl_amount");
-    let ret: U256 = DragonLair::default().o_snowl_for_snowl(o_snowl_amount);
+fn d_staking_token_for_staking_token_jsclient() {
+    let d_staking_token_amount: U256 = runtime::get_named_arg("d_staking_token_amount");
+    let ret: U256 = DragonLair::default().d_staking_token_for_staking_token(d_staking_token_amount);
     data::js_ret(ret)
 }
 #[no_mangle]
-fn snowl_for_o_snowl() {
-    let snowl_amount: U256 = runtime::get_named_arg("snowl_amount");
-    let ret: U256 = DragonLair::default().snowl_for_o_snowl(snowl_amount);
+fn staking_token_for_d_staking_token() {
+    let staking_token_amount: U256 = runtime::get_named_arg("staking_token_amount");
+    let ret: U256 = DragonLair::default().staking_token_for_d_staking_token(staking_token_amount);
     runtime::ret(CLValue::from_t(ret).unwrap_or_revert());
 }
 #[no_mangle]
-fn snowl_for_o_snowl_jsclient() {
-    let snowl_amount: U256 = runtime::get_named_arg("snowl_amount");
-    let ret: U256 = DragonLair::default().snowl_for_o_snowl(snowl_amount);
+fn staking_token_for_d_staking_token_jsclient() {
+    let staking_token_amount: U256 = runtime::get_named_arg("staking_token_amount");
+    let ret: U256 = DragonLair::default().staking_token_for_d_staking_token(staking_token_amount);
     data::js_ret(ret)
 }
 #[no_mangle]
@@ -357,7 +357,7 @@ fn get_entry_points() -> EntryPoints {
     entry_points.add_entry_point(EntryPoint::new(
         "constructor",
         vec![
-            Parameter::new("snowl", Key::cl_type()),
+            Parameter::new("staking_token", Key::cl_type()),
             Parameter::new("contract_hash", ContractHash::cl_type()),
             Parameter::new("package_hash", ContractPackageHash::cl_type()),
         ],
@@ -366,7 +366,7 @@ fn get_entry_points() -> EntryPoints {
         EntryPointType::Contract,
     ));
     entry_points.add_entry_point(EntryPoint::new(
-        "snowl",
+        "staking_token",
         vec![],
         <()>::cl_type(),
         EntryPointAccess::Public,
@@ -374,56 +374,56 @@ fn get_entry_points() -> EntryPoints {
     ));
     entry_points.add_entry_point(EntryPoint::new(
         "enter",
-        vec![Parameter::new("snowl_amount", U256::cl_type())],
+        vec![Parameter::new("staking_token_amount", U256::cl_type())],
         <()>::cl_type(),
         EntryPointAccess::Public,
         EntryPointType::Contract,
     ));
     entry_points.add_entry_point(EntryPoint::new(
         "leave",
-        vec![Parameter::new("o_snowl_amount", U256::cl_type())],
+        vec![Parameter::new("d_staking_token_amount", U256::cl_type())],
         <()>::cl_type(),
         EntryPointAccess::Public,
         EntryPointType::Contract,
     ));
     entry_points.add_entry_point(EntryPoint::new(
-        "snowl_balance",
+        "staking_token_balance",
         vec![Parameter::new("account", Key::cl_type())],
         U256::cl_type(),
         EntryPointAccess::Public,
         EntryPointType::Contract,
     ));
     entry_points.add_entry_point(EntryPoint::new(
-        "snowl_balance_jsclient",
+        "staking_token_balance_jsclient",
         vec![Parameter::new("account", Key::cl_type())],
         <()>::cl_type(),
         EntryPointAccess::Public,
         EntryPointType::Contract,
     ));
     entry_points.add_entry_point(EntryPoint::new(
-        "o_snowl_for_snowl",
-        vec![Parameter::new("o_snowl_amount", U256::cl_type())],
+        "d_staking_token_for_staking_token",
+        vec![Parameter::new("d_staking_token_amount", U256::cl_type())],
         U256::cl_type(),
         EntryPointAccess::Public,
         EntryPointType::Contract,
     ));
     entry_points.add_entry_point(EntryPoint::new(
-        "o_snowl_for_snowl_jsclient",
-        vec![Parameter::new("o_snowl_amount", U256::cl_type())],
+        "d_staking_token_for_staking_token_jsclient",
+        vec![Parameter::new("d_staking_token_amount", U256::cl_type())],
         <()>::cl_type(),
         EntryPointAccess::Public,
         EntryPointType::Contract,
     ));
     entry_points.add_entry_point(EntryPoint::new(
-        "snowl_for_o_snowl",
-        vec![Parameter::new("snowl_amount", U256::cl_type())],
+        "staking_token_for_d_staking_token",
+        vec![Parameter::new("staking_token_amount", U256::cl_type())],
         U256::cl_type(),
         EntryPointAccess::Public,
         EntryPointType::Contract,
     ));
     entry_points.add_entry_point(EntryPoint::new(
-        "snowl_for_o_snowl_jsclient",
-        vec![Parameter::new("snowl_amount", U256::cl_type())],
+        "staking_token_for_d_staking_token_jsclient",
+        vec![Parameter::new("staking_token_amount", U256::cl_type())],
         <()>::cl_type(),
         EntryPointAccess::Public,
         EntryPointType::Contract,
@@ -612,11 +612,11 @@ fn call() {
         let (contract_hash, _) =
             storage::add_contract_version(package_hash, get_entry_points(), Default::default());
 
-        let snowl: Key = runtime::get_named_arg("snowl");
+        let staking_token: Key = runtime::get_named_arg("staking_token");
 
         // Prepare constructor args
         let constructor_args = runtime_args! {
-            "snowl" => snowl,
+            "staking_token" => staking_token,
             "contract_hash" => contract_hash,
             "package_hash"=> package_hash
 

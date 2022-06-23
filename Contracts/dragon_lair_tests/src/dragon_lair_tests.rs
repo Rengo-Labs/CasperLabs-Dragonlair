@@ -55,35 +55,35 @@ fn test_leave() {
     dragon_lair_instance.leave(owner, U256::from(TEN_E_NINE * 2));
 }
 #[test]
-fn test_snowl_balance() {
+fn test_staking_token_balance() {
     let (_, owner, dragon_lair_instance, proxy) = deploy();
     let dragon_lair_instance = DRAGONLAIRInstance::contract_instance(dragon_lair_instance);
     let proxy = DRAGONLAIRInstance::contract_instance(proxy);
     let account: Key = Key::Account(owner);
     dragon_lair_instance.enter(owner, U256::from(TEN_E_NINE * 12));
-    proxy.snowl_balance(owner, account);
+    proxy.staking_token_balance(owner, account);
 }
 #[test]
-fn test_snowl_balance_jsclient() {
+fn test_staking_token_balance_jsclient() {
     let (_, owner, dragon_lair_instance, _) = deploy();
     let dragon_lair_instance = DRAGONLAIRInstance::contract_instance(dragon_lair_instance);
     let account: Key = Key::Account(owner);
     dragon_lair_instance.enter(owner, U256::from(TEN_E_NINE * 2));
-    dragon_lair_instance.snowl_balance_jsclient(owner, account);
+    dragon_lair_instance.staking_token_balance_jsclient(owner, account);
 }
 #[test]
-fn test_o_snowl_for_snowl() {
+fn test_d_staking_token_for_staking_token() {
     let (_, owner, dragon_lair_instance, proxy) = deploy();
     let dragon_lair_instance = DRAGONLAIRInstance::contract_instance(dragon_lair_instance);
     let proxy = DRAGONLAIRInstance::contract_instance(proxy);
     dragon_lair_instance.enter(owner, U256::from(TEN_E_NINE * 7));
-    proxy.o_snowl_for_snowl(owner, U256::from(TEN_E_NINE * 2));
+    proxy.d_staking_token_for_staking_token(owner, U256::from(TEN_E_NINE * 2));
 }
 #[test]
-fn test_snowl_for_o_snowl() {
+fn test_staking_token_for_d_staking_token() {
     let (_, owner, dragon_lair_instance, proxy) = deploy();
     let dragon_lair_instance = DRAGONLAIRInstance::contract_instance(dragon_lair_instance);
     let proxy = DRAGONLAIRInstance::contract_instance(proxy);
     dragon_lair_instance.enter(owner, U256::from(TEN_E_NINE * 8));
-    proxy.snowl_for_o_snowl(owner, U256::from(TEN_E_NINE * 2));
+    proxy.staking_token_for_d_staking_token(owner, U256::from(TEN_E_NINE * 2));
 }

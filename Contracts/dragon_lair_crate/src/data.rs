@@ -8,7 +8,7 @@ use core::convert::TryInto;
 
 pub const SELF_CONTRACT_HASH: &str = "self_contract_hash";
 pub const SELF_PACKAGE_HASH: &str = "self_package_hash";
-pub const SNOWL: &str = "snowl";
+pub const STAKINGTOKEN: &str = "staking_token";
 pub const RESULT: &str = "result";
 
 pub fn set_result<T: ToBytes + CLTyped>(value: T) {
@@ -27,11 +27,11 @@ pub fn set_result<T: ToBytes + CLTyped>(value: T) {
 pub fn set_hash(contract_hash: Key) {
     set_key(SELF_CONTRACT_HASH, contract_hash);
 }
-pub fn set_snowl(snowl: Key) {
-    set_key(SNOWL, snowl);
+pub fn set_staking_token(staking_token: Key) {
+    set_key(STAKINGTOKEN, staking_token);
 }
-pub fn get_snowl() -> Key {
-    get_key(SNOWL).unwrap_or_revert()
+pub fn get_staking_token() -> Key {
+    get_key(STAKINGTOKEN).unwrap_or_revert()
 }
 pub fn get_hash() -> Key {
     get_key(SELF_CONTRACT_HASH).unwrap_or_revert()
